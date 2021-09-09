@@ -1,19 +1,13 @@
 <template>
-  <div class="hello alert alert-primary">
+  <div class="alert alert-primary">
     <h2>{{ title }}</h2>
     <p>{{ message }}</p>
     <hr />
     <button class="btn btn-primary m-3" v-on:click="doAction">
       {{ btn }}
     </button>
-    <transition
-      name="transit"
-      v-on:before-enter="startAction"
-      v-on:before-leave="startAction"
-      v-on:after-enter="endAction"
-      v-on:after-leave="endAction"
-    >
-      <p v-if="flg" class="trans alert alert-light h5">Transition!</p>
+    <transition name="transit">
+      <p v-if="flg" class="trans">Transition!</p>
     </transition>
   </div>
 </template>
@@ -21,36 +15,17 @@
 <script>
 export default {
   name: "HelloWorld",
-  props: {
-    title: String,
-  },
   data: function () {
     return {
       title: "Trans&Anim",
       message: "Transition Sample!",
       flg: true,
-      btn: "Hide",
+      btn: "Show/Hide",
     };
   },
   methods: {
-    doAction: function () {
+    doAction() {
       this.flg = !this.flg;
-    },
-    startAction: function () {
-      if (this.flg) {
-        this.message = "現れます.....";
-      } else {
-        this.message = "消えます.....";
-      }
-    },
-    endAction: function () {
-      if (this.flg) {
-        this.btn = "Hide";
-        this.message = "現れました。";
-      } else {
-        this.btn = "Show";
-        this.message = "消えました。";
-      }
     },
   },
 };
@@ -65,24 +40,15 @@ export default {
 }
 
 .transit-enter-active {
-  transition: opacity 2s;
+  transition: 1s;
 }
 .transit-leave-active {
-  transition: opacity 2s;
+  transition: 1s;
+  opacity: 0.5;
 }
-.transit-enter {
-  opacity: 0;
-}
-.transit-enter-from {
-  opacity: 0;
-}
-.transit-enter-to {
-  opacity: 1;
-}
-.transit-leave {
-  opacity: 1;
-}
+.transit-enter,
 .transit-leave-to {
-  opacity: 0;
+  transform: translateX(200px) translateY(-200px);
+  opacity: 0.1;
 }
 </style>
