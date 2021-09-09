@@ -29,3 +29,34 @@ export default {
   },
 };
 </script>
+
+<style>
+.trans {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-size: 20pt;
+}
+
+.transit-enter-active {
+  transition: opacity 0.5s;
+}
+.transit-leave-active {
+  transition: opacity 5s;
+}
+.transit-enter {
+  opacity: 0;
+}
+.transit-enter-from {
+  opacity: 0;
+}
+.transit-enter-to {
+  opacity: 1;
+}
+.transit-leave {
+  opacity: 1;
+}
+.transit-leave-to {
+  opacity: 0;
+}
+</style>
