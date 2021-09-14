@@ -1,10 +1,9 @@
 <template>
   <div class="alert alert-primary">
-    <h2>{{ title }}</h2>
+    <h1>{{ title }}</h1>
     <p>{{ message }}</p>
-    <hr />
-    <button class="btn btn-primary m-3" v-on:click="doAction">
-      {{ btn }}
+    <button class="btn btn-primary mb-3" v-on:click="doAction">
+      Show/Hide
     </button>
     <transition name="transit">
       <p v-if="flg" class="trans">Transition!</p>
@@ -20,7 +19,7 @@ export default {
       title: "Trans&Anim",
       message: "Transition Sample!",
       flg: true,
-      btn: "Show/Hide",
+      btn: "Hide",
     };
   },
   methods: {
@@ -38,7 +37,6 @@ export default {
   padding: 10px;
   font-size: 20pt;
 }
-
 .transit-enter-active {
   transition: 1s;
 }
@@ -46,9 +44,10 @@ export default {
   transition: 1s;
   opacity: 0.5;
 }
-.transit-enter,
+.transit-enter-from,
 .transit-leave-to {
-  transform: translateX(200px) translateY(-200px);
+  transform: scale(5);
   opacity: 0.1;
 }
 </style>
+
